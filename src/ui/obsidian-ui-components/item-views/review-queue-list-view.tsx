@@ -15,6 +15,8 @@ import { formatDateWithMoment } from "src/utils/dates";
 
 export const REVIEW_QUEUE_VIEW_TYPE = "review-queue-list-view";
 
+type NoteDueStatus = "overdue" | "due-today";
+
 export class ReviewQueueListView extends ItemView {
     private get noteReviewQueue(): NoteReviewQueue {
         return this.nextNoteReviewHandler.noteReviewQueue;
@@ -116,13 +118,17 @@ export class ReviewQueueListView extends ItemView {
         deck: NoteReviewDeck,
         deckCollapsed: boolean,
     ) {
-        const deckFolderEl: HTMLElement = this.createFolder(
+        const folderEl: HTMLElement = this.createFolder(
             parentEl,
             deckKey,
             deckCollapsed,
             false,
             deck,
-        ).getElementsByClassName("tree-item-children nav-folder-children")[0] as HTMLElement;
+        );
+        folderEl.classList.add("sr-deck-item");
+        const deckFolderEl = folderEl.getElementsByClassName(
+            "tree-item-children nav-folder-children",
+        )[0] as HTMLElement;
 
         if (deck.newNotes.length > 0) {
             this.createNewNotesFolder(deckFolderEl, deck, deckCollapsed);
@@ -145,6 +151,7 @@ export class ReviewQueueListView extends ItemView {
             deckCollapsed,
             deck,
         );
+        newNotesFolderEl.classList.add("sr-due-status-item");
 
         for (const newFile of deck.newNotes) {
             const fileIsOpen =
@@ -161,6 +168,7 @@ export class ReviewQueueListView extends ItemView {
                 fileIsOpen,
                 !deck.activeFolders.has(t("NEW")),
                 deck,
+                "due-today",
             );
         }
     }
@@ -178,9 +186,9 @@ export class ReviewQueueListView extends ItemView {
         const maxDaysToRender: number = this.settings.maxNDaysNotesReviewQueue;
 
         for (const sNote of deck.scheduledNotes) {
-            if (sNote.dueUnix !== currUnix) {
-                const nDays: number = Math.ceil((sNote.dueUnix - now) / TICKS_PER_DAY);
+            const nDays: number = Math.ceil((sNote.dueUnix - now) / TICKS_PER_DAY);
 
+            if (sNote.dueUnix !== currUnix) {
                 if (nDays > maxDaysToRender) {
                     break;
                 }
@@ -205,6 +213,7 @@ export class ReviewQueueListView extends ItemView {
                     deckCollapsed,
                     deck,
                 );
+                scheduleFolderEl.classList.add("sr-due-status-item");
                 currUnix = sNote.dueUnix;
             }
 
@@ -218,12 +227,16 @@ export class ReviewQueueListView extends ItemView {
             }
 
             if (scheduleFolderEl) {
+                const dueStatus: NoteDueStatus | undefined =
+                    nDays < 0 ? "overdue" : nDays === 0 ? "due-today" : undefined;
+
                 this.createFile(
                     scheduleFolderEl,
                     sNote.note.tfile,
                     fileIsOpen,
                     !deck.activeFolders.has(folderTitle),
                     deck,
+                    dueStatus,
                 );
             }
         }
@@ -236,7 +249,7 @@ export class ReviewQueueListView extends ItemView {
         hidden: boolean,
         deck: NoteReviewDeck,
     ): HTMLElement {
-        const folderEl: HTMLDivElement = parentEl.createDiv("tree-item nav-folder");
+        const folderEl: HTMLDivElement = parentEl.createDiv("tree-item nav-folder sr-folder");
         const folderTitleEl: HTMLDivElement = folderEl.createDiv("tree-item-self nav-folder-title");
         folderTitleEl.classList.add("is-clickable");
         const childrenEl: HTMLDivElement = folderEl.createDiv(
@@ -284,6 +297,7 @@ export class ReviewQueueListView extends ItemView {
         fileElActive: boolean,
         hidden: boolean,
         deck: NoteReviewDeck,
+        dueStatus?: NoteDueStatus,
     ): void {
         const childrenEl: HTMLElement = folderEl.getElementsByClassName(
             "tree-item-children nav-folder-children",
@@ -300,6 +314,12 @@ export class ReviewQueueListView extends ItemView {
 
         if (fileElActive) {
             navFileTitle.addClass("is-active");
+        }
+
+        if (dueStatus === "overdue") {
+            navFileTitle.addClass("sr-note-overdue");
+        } else if (dueStatus === "due-today") {
+            navFileTitle.addClass("sr-note-due-today");
         }
 
         const navFileTitleInner: HTMLElement = navFileTitle.createDiv(

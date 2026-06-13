@@ -16,10 +16,35 @@
         border-radius: var(--input-radius);
     }
 
+    .tree-item.sr-deck-item.is-collapsed > .tree-item-self::after {
+        margin-left: auto;
+        content: "●";
+    }
+    .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-due-today) > .tree-item-self::after {
+        margin-left: auto;
+        content: "●";
+        color: #2f9e44;
+    }
+    .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-overdue) > .tree-item-self::after {
+        margin-left: auto;
+        content: "●";
+        color: #e03131;
+    }
+
     .nav-file-title {
         display: flex;
         align-items: center;
         justify-content: space-between;
+
+        &.sr-note-due-today {
+            border-left: 4px solid #2f9e44;
+            border-radius: var(--input-radius);
+        }
+
+        &.sr-note-overdue {
+            border-left: 4px solid #e03131;
+            border-radius: var(--input-radius);
+        }
     }
 
     .nav-file-title-content {
