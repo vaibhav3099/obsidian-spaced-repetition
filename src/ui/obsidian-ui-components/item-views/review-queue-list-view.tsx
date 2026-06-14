@@ -249,7 +249,7 @@ export class ReviewQueueListView extends ItemView {
         hidden: boolean,
         deck: NoteReviewDeck,
     ): HTMLElement {
-        const folderEl: HTMLDivElement = parentEl.createDiv("tree-item nav-folder sr-folder");
+        const folderEl: HTMLDivElement = parentEl.createDiv("tree-item nav-folder");
         const folderTitleEl: HTMLDivElement = folderEl.createDiv("tree-item-self nav-folder-title");
         folderTitleEl.classList.add("is-clickable");
         const childrenEl: HTMLDivElement = folderEl.createDiv(
