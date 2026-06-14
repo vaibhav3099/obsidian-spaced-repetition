@@ -71,7 +71,11 @@
         ) {
         & > .tree-item-self::after {
             margin-left: auto;
-            color: #e03131;
+            content: "";
+            width: 0.6rem;
+            height: 0.6rem;
+            border-radius: 50% 50%;
+            background: #e03131;
         }
     }
 
@@ -85,7 +89,11 @@
         &:has(.sr-file--new) {
             & > .tree-item-self::after {
                 margin-left: auto;
-                color: #2f9e44;
+                content: "";
+                width: 0.6rem;
+                height: 0.6rem;
+                border-radius: 50% 50%;
+                background: #2f9e44;
             }
         }
     }
@@ -101,7 +109,8 @@
             content: "";
             width: 0.6rem;
             height: 0.6rem;
-            color: #2f9e44;
+            border-radius: 50% 50%;
+            background: #2f9e44;
         }
     }
 
@@ -115,7 +124,8 @@
             content: "";
             width: 0.6rem;
             height: 0.6rem;
-            color: #e03131;
+            border-radius: 50% 50%;
+            background: #e03131;
         }
     }
 
