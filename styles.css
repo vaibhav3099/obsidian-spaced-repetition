@@ -1142,34 +1142,99 @@ th.gridjs-th:last-child {
     background-color: var(--background-modifier-hover);
     border-radius: var(--input-radius);
   }
-  .tree-item.sr-deck-item.is-collapsed > .tree-item-self::after {
-    margin-left: auto;
-    content: "\25cf";
-  }
   .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-due-today)
     > .tree-item-self::after {
     margin-left: auto;
-    content: "\25cf";
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
     color: #2f9e44;
   }
   .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-overdue)
     > .tree-item-self::after {
     margin-left: auto;
-    content: "\25cf";
+    content: "";
+    width: 0.6rem;
+    height: 0.6rem;
     color: #e03131;
   }
   .nav-file-title {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    &.sr-note-due-today {
-      border-left: 4px solid #2f9e44;
-      border-radius: var(--input-radius);
+  }
+  .sr-folder--deck.is-collapsed:has(.sr-file--due-over) {
+    &:has(.sr-file--due-today),
+    &:has(.sr-file--new) {
+      & > .tree-item-self::after {
+        margin-left: auto;
+        content: "";
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50% 50%;
+        background: linear-gradient(
+          120deg,
+          rgba(224, 49, 49, 1) 29%,
+          rgba(87, 199, 133, 1) 100%,
+          rgba(47, 158, 68, 1) 100%
+        );
+      }
     }
-    &.sr-note-overdue {
-      border-left: 4px solid #e03131;
-      border-radius: var(--input-radius);
+  }
+  .sr-folder--deck.is-collapsed:has(.sr-file--due-over):not(
+      :has(.sr-file--due-today)
+    ):not(:has(.sr-file--new)) {
+    & > .tree-item-self::after {
+      margin-left: auto;
+      content: "";
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50% 50%;
+      background: #e03131;
     }
+  }
+  .sr-folder--deck.is-collapsed:not(:has(.sr-file--due-over)) {
+    &:has(.sr-file--due-today),
+    &:has(.sr-file--new) {
+      & > .tree-item-self::after {
+        margin-left: auto;
+        content: "";
+        width: 0.6rem;
+        height: 0.6rem;
+        border-radius: 50% 50%;
+        background: #2f9e44;
+      }
+    }
+  }
+  .sr-folder--schedule--new,
+  .sr-folder--schedule--due-today {
+    &.is-collapsed > .tree-item-self::after {
+      margin-left: auto;
+      content: "";
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50% 50%;
+      background: #2f9e44;
+    }
+  }
+  .sr-folder--schedule--due-over {
+    &.is-collapsed > .tree-item-self::after {
+      margin-left: auto;
+      content: "";
+      width: 0.6rem;
+      height: 0.6rem;
+      border-radius: 50% 50%;
+      background: #e03131;
+    }
+  }
+  .sr-file--due-today,
+  .sr-file--new {
+    border-left: 4px solid #2f9e44;
+    border-radius: var(--input-radius);
+  }
+  .sr-file--due-over {
+    border-left: 4px solid #e03131;
+    border-radius: var(--input-radius);
   }
   .nav-file-title-content {
     display: flex;
