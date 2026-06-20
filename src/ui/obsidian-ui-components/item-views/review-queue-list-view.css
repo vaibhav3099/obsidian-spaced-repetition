@@ -16,21 +16,6 @@
         border-radius: var(--input-radius);
     }
 
-    .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-due-today) > .tree-item-self::after {
-        margin-left: auto;
-        content: "";
-        width: 0.6rem;
-        height: 0.6rem;
-        color: #2f9e44;
-    }
-    .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-overdue) > .tree-item-self::after {
-        margin-left: auto;
-        content: "";
-        width: 0.6rem;
-        height: 0.6rem;
-        color: #e03131;
-    }
-
     .nav-file-title {
         display: flex;
         align-items: center;
