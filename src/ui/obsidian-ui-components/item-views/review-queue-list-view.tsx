@@ -118,7 +118,7 @@ export class ReviewQueueListView extends ItemView {
         deck: NoteReviewDeck,
         deckCollapsed: boolean,
     ) {
-        const folderEl: HTMLElement = this.createFolder(
+        const deckFolderEl: HTMLElement = this.createFolder(
             parentEl,
             deckKey,
             deckCollapsed,
@@ -127,10 +127,7 @@ export class ReviewQueueListView extends ItemView {
             {
                 treeItem: ["sr-folder--deck"],
             },
-        );
-        const deckFolderEl = folderEl.getElementsByClassName(
-            "tree-item-children nav-folder-children",
-        )[0] as HTMLElement;
+        ).getElementsByClassName("tree-item-children nav-folder-children")[0] as HTMLElement;
 
         if (deck.newNotes.length > 0) {
             this.createNewNotesFolder(deckFolderEl, deck, deckCollapsed);
