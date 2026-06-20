@@ -188,8 +188,7 @@ export class ReviewQueueListView extends ItemView {
         const now: number = Date.now();
         let currUnix = -1;
         let scheduleFolderEl: HTMLElement | null = null,
-            folderTitle = "",
-            folderClassName = "";
+            folderTitle = "";
         const maxDaysToRender: number = this.settings.maxNDaysNotesReviewQueue;
 
         for (const sNote of deck.scheduledNotes) {
@@ -202,13 +201,10 @@ export class ReviewQueueListView extends ItemView {
 
                 if (nDays === -1) {
                     folderTitle = t("YESTERDAY");
-                    folderClassName = "sr-folder--due-over";
                 } else if (nDays === 0) {
                     folderTitle = t("TODAY");
-                    folderClassName = "sr-folder--due-today";
                 } else if (nDays === 1) {
                     folderTitle = t("TOMORROW");
-                    folderClassName = "sr-folder--due-none";
                 } else {
                     folderTitle = formatDateWithMoment(
                         sNote.dueUnix,
@@ -289,7 +285,9 @@ export class ReviewQueueListView extends ItemView {
         },
     ): HTMLElement {
         const folderEl: HTMLDivElement = parentEl.createDiv("tree-item nav-folder");
-        classes?.treeItem && folderEl.classList.add(...classes?.treeItem);
+        if (classes?.treeItem) {
+            folderEl.classList.add(...classes.treeItem);
+        }
         const folderTitleEl: HTMLDivElement = folderEl.createDiv("tree-item-self nav-folder-title");
         folderTitleEl.classList.add("is-clickable");
         const childrenEl: HTMLDivElement = folderEl.createDiv(
@@ -357,7 +355,9 @@ export class ReviewQueueListView extends ItemView {
         if (fileElActive) {
             navFileTitle.addClass("is-active");
         }
-        classes?.treeItemSelf && navFileTitle.classList.add(...classes?.treeItemSelf);
+        if (classes?.treeItemSelf) {
+            navFileTitle.classList.add(...classes.treeItemSelf);
+        }
         const navFileTitleInner: HTMLElement = navFileTitle.createDiv(
             "tree-item-inner nav-file-title-content",
         );
