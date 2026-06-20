@@ -37,7 +37,7 @@
         justify-content: space-between;
     }
 
-    /* Select folder which has descendant :
+    /* Select deck folders which has descendant :
       .sr-file--due-over AND (.sr-file--due-today OR .sr-file--new)
 
       Add red-green indicator
@@ -61,7 +61,7 @@
         }
     }
 
-    /* Select folder which has descendant :
+    /* Select deck folders which has descendant :
       .sr-file--due-over AND (NOT .sr-file--due-today) AND (NOT sr-file--new)
       
       Add reddish indicator
@@ -79,7 +79,7 @@
         }
     }
 
-    /* Select folder which has descendant :
+    /* Select deck folders which has descendant :
       NOT .sr-file--due-over AND (.sr-file--due-today OR .sr-file--new)
       
       Add greenish indicator
