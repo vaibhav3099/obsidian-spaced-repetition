@@ -119,8 +119,7 @@
      */
     .sr-file--due-today,
     .sr-file--new {
-        border-left: 4px solid #2f9e44;
-        border-radius: var(--input-radius);
+        border-left: var(--size-4-1) solid #2f9e44;
     }
 
     /* Select files which are either over-due
@@ -128,8 +127,7 @@
      */
 
     .sr-file--due-over {
-        border-left: 4px solid #e03131;
-        border-radius: var(--input-radius);
+        border-left: var(--size-4-1) solid #e03131;
     }
 
     .nav-file-title-content {
