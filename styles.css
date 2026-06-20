@@ -1142,22 +1142,6 @@ th.gridjs-th:last-child {
     background-color: var(--background-modifier-hover);
     border-radius: var(--input-radius);
   }
-  .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-due-today)
-    > .tree-item-self::after {
-    margin-left: auto;
-    content: "";
-    width: 0.6rem;
-    height: 0.6rem;
-    color: #2f9e44;
-  }
-  .tree-item.sr-due-status-item.is-collapsed:has(.sr-note-overdue)
-    > .tree-item-self::after {
-    margin-left: auto;
-    content: "";
-    width: 0.6rem;
-    height: 0.6rem;
-    color: #e03131;
-  }
   .nav-file-title {
     display: flex;
     align-items: center;
@@ -1173,10 +1157,9 @@ th.gridjs-th:last-child {
         height: 0.6rem;
         border-radius: 50% 50%;
         background: linear-gradient(
-          120deg,
-          rgba(224, 49, 49, 1) 29%,
-          rgba(87, 199, 133, 1) 100%,
-          rgba(47, 158, 68, 1) 100%
+          90deg,
+          var(--color-red) 40%,
+          var(--color-green) 60%
         );
       }
     }
@@ -1190,7 +1173,7 @@ th.gridjs-th:last-child {
       width: 0.6rem;
       height: 0.6rem;
       border-radius: 50% 50%;
-      background: #e03131;
+      background: var(--color-red);
     }
   }
   .sr-folder--deck.is-collapsed:not(:has(.sr-file--due-over)) {
@@ -1202,7 +1185,7 @@ th.gridjs-th:last-child {
         width: 0.6rem;
         height: 0.6rem;
         border-radius: 50% 50%;
-        background: #2f9e44;
+        background: var(--color-green);
       }
     }
   }
@@ -1214,7 +1197,7 @@ th.gridjs-th:last-child {
       width: 0.6rem;
       height: 0.6rem;
       border-radius: 50% 50%;
-      background: #2f9e44;
+      background: var(--color-green);
     }
   }
   .sr-folder--schedule--due-over {
@@ -1224,17 +1207,15 @@ th.gridjs-th:last-child {
       width: 0.6rem;
       height: 0.6rem;
       border-radius: 50% 50%;
-      background: #e03131;
+      background: var(--color-red);
     }
   }
   .sr-file--due-today,
   .sr-file--new {
-    border-left: 4px solid #2f9e44;
-    border-radius: var(--input-radius);
+    border-left: var(--size-4-1) solid var(--color-green);
   }
   .sr-file--due-over {
-    border-left: 4px solid #e03131;
-    border-radius: var(--input-radius);
+    border-left: var(--size-4-1) solid var(--color-red);
   }
   .nav-file-title-content {
     display: flex;

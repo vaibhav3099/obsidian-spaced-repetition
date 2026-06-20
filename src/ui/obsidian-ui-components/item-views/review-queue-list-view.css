@@ -36,12 +36,7 @@
                 width: 0.6rem;
                 height: 0.6rem;
                 border-radius: 50% 50%;
-                background: linear-gradient(
-                    120deg,
-                    rgba(224, 49, 49, 1) 29%,
-                    rgba(87, 199, 133, 1) 100%,
-                    rgba(47, 158, 68, 1) 100%
-                );
+                background: linear-gradient(90deg, var(--color-red) 40%, var(--color-green) 60%);
             }
         }
     }
@@ -60,7 +55,7 @@
             width: 0.6rem;
             height: 0.6rem;
             border-radius: 50% 50%;
-            background: #e03131;
+            background: var(--color-red);
         }
     }
 
@@ -78,7 +73,7 @@
                 width: 0.6rem;
                 height: 0.6rem;
                 border-radius: 50% 50%;
-                background: #2f9e44;
+                background: var(--color-green);
             }
         }
     }
@@ -95,7 +90,7 @@
             width: 0.6rem;
             height: 0.6rem;
             border-radius: 50% 50%;
-            background: #2f9e44;
+            background: var(--color-green);
         }
     }
 
@@ -110,7 +105,7 @@
             width: 0.6rem;
             height: 0.6rem;
             border-radius: 50% 50%;
-            background: #e03131;
+            background: var(--color-red);
         }
     }
 
@@ -119,7 +114,7 @@
      */
     .sr-file--due-today,
     .sr-file--new {
-        border-left: var(--size-4-1) solid #2f9e44;
+        border-left: var(--size-4-1) solid var(--color-green);
     }
 
     /* Select files which are either over-due
@@ -127,7 +122,7 @@
      */
 
     .sr-file--due-over {
-        border-left: var(--size-4-1) solid #e03131;
+        border-left: var(--size-4-1) solid var(--color-red);
     }
 
     .nav-file-title-content {
