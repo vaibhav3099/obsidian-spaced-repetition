@@ -1153,8 +1153,8 @@ th.gridjs-th:last-child {
       & > .tree-item-self::after {
         margin-left: auto;
         content: "";
-        width: 0.6rem;
-        height: 0.6rem;
+        width: var(--size-4-3);
+        height: var(--size-4-3);
         border-radius: 50% 50%;
         background: linear-gradient(
           90deg,
@@ -1170,8 +1170,8 @@ th.gridjs-th:last-child {
     & > .tree-item-self::after {
       margin-left: auto;
       content: "";
-      width: 0.6rem;
-      height: 0.6rem;
+      width: var(--size-4-3);
+      height: var(--size-4-3);
       border-radius: 50% 50%;
       background: var(--color-red);
     }
@@ -1182,8 +1182,8 @@ th.gridjs-th:last-child {
       & > .tree-item-self::after {
         margin-left: auto;
         content: "";
-        width: 0.6rem;
-        height: 0.6rem;
+        width: var(--size-4-3);
+        height: var(--size-4-3);
         border-radius: 50% 50%;
         background: var(--color-green);
       }
@@ -1194,8 +1194,8 @@ th.gridjs-th:last-child {
     &.is-collapsed > .tree-item-self::after {
       margin-left: auto;
       content: "";
-      width: 0.6rem;
-      height: 0.6rem;
+      width: var(--size-4-3);
+      height: var(--size-4-3);
       border-radius: 50% 50%;
       background: var(--color-green);
     }
@@ -1204,8 +1204,8 @@ th.gridjs-th:last-child {
     &.is-collapsed > .tree-item-self::after {
       margin-left: auto;
       content: "";
-      width: 0.6rem;
-      height: 0.6rem;
+      width: var(--size-4-3);
+      height: var(--size-4-3);
       border-radius: 50% 50%;
       background: var(--color-red);
     }
